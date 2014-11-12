@@ -7,12 +7,24 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [GMSServices provideAPIKey:@"AIzaSyAr4P7vZymBTkNGE_Wt-tSAFY49Ralmh_o"];
+    
+    [Parse setApplicationId:@"Q9G9ruGk10iNaka3IYn2N6LNspqx8UkBJau9tPba"
+                  clientKey:@"mZVih9gPcK469n3TdBmMXATT5pK3bg7wduYfGahb"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+        
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+    
     return YES;
 }
 							
